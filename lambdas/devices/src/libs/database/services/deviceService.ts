@@ -38,7 +38,16 @@ class DeviceService {
             .update({
                 TableName: this.tableName,
                 Key: { DeviceId },
-                UpdateExpression: "set isConnected = :isConnected, lastAliveDate = :lastAliveDate, name = :name, type = :type, queues = :queues",
+                UpdateExpression:
+                    "set #isConnected = :isConnected, #lastAliveDate = :lastAliveDate, #name = :name, #type = :type, #queues = :queues",
+                ExpressionAttributeNames: {
+                    "#isConnected": "isConnected",
+                    "#lastAliveDate": "lastAliveDate",
+                    "#name": "name",
+                    "#type": "type",
+                    "#ownerId": "ownerId",
+                    "#queues": "queues",
+                },
                 ConditionExpression: "(ownerId = :uid)",
                 ExpressionAttributeValues: {
                     ":isConnected": partialDevice.isConnected,
