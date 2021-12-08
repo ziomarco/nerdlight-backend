@@ -1,0 +1,13 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# esbuild directories
+.esbuild
+
+# DynamoDB simulator
+# see https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html
+.dynamodb
